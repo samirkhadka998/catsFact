@@ -18,7 +18,7 @@ export class AppComponent {
   }
 
   bore(){
-    this.router.navigate(['/bore'])
+    this.dataService.emitBoreButtonClicked();
   }
 
   cat(){
