@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from './service/data.service';
+import { SpinnerService } from './spinner.service';
 
 
 @Component({
@@ -10,10 +11,8 @@ import { DataService } from './service/data.service';
 })
 export class AppComponent {
   title = 'catFacts';
-  /**
-   *
-   */
-  constructor(private router : Router, private dataService: DataService) {
+  isLoading$ = this.spinnerService.isLoading$;
+  constructor(private router : Router, private dataService: DataService, private spinnerService : SpinnerService) {
     
   }
 

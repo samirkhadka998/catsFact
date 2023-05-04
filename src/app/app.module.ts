@@ -5,20 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BoreComponent } from './bore/bore.component';
 import { CatComponent } from './cat/cat.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderInterceptor } from './loader.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoreComponent,
-    CatComponent
+    CatComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass : LoaderInterceptor, multi : true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
